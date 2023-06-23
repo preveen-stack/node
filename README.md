@@ -102,11 +102,20 @@ To download `SHASUMS256.txt` using `curl`:
 curl -O https://nodejs.org/dist/vx.y.z/SHASUMS256.txt
 ```
 
+For Windows use Power Shell
+```
+Invoke-WebRequest -Uri "https://nodejs.org/dist/vx.y.z/SHASUMS256.txt" -OutFile ".\SHASUMS256.txt"
+```
+
 To check that a downloaded file matches the checksum, run
 it through `sha256sum` with a command such as:
 
 ```bash
 grep node-vx.y.z.tar.gz SHASUMS256.txt | sha256sum -c -
+```
+For Windows use Power Shell
+```
+Select-String -Pattern 'node-vx.y.z.tar.gz' -Path .\SHASUMS256.txt | Get-FileHash -Algorithm SHA256 -HashValue | ForEach-Object { $_ + ' *SHASUMS256.txt' } | Set-Content -Path .\checksums.txt
 ```
 
 For Current and LTS, the GPG detached signature of `SHASUMS256.txt` is in
@@ -118,6 +127,7 @@ import the keys:
 ```bash
 gpg --keyserver hkps://keys.openpgp.org --recv-keys 4ED778F539E3634C779C87C6D7062848A1AB005C
 ```
+For Windows install gpg (https://www.phildev.net/pgp/gpginstall.html)
 
 See [Release keys](#release-keys) for a script to import active release keys.
 
@@ -125,6 +135,10 @@ Next, download the `SHASUMS256.txt.sig` for the release:
 
 ```bash
 curl -O https://nodejs.org/dist/vx.y.z/SHASUMS256.txt.sig
+```
+For Windows using Power Shell
+```
+Invoke-WebRequest -Uri "https://nodejs.org/dist/vx.y.z/SHASUMS256.txt.sig" -OutFile ".\SHASUMS256.txt.sig"
 ```
 
 Then use `gpg --verify SHASUMS256.txt.sig SHASUMS256.txt` to verify
