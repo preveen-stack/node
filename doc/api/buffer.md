@@ -16,6 +16,8 @@ plain [`Uint8Array`][]s wherever `Buffer`s are supported as well.
 While the `Buffer` class is available within the global scope, it is still
 recommended to explicitly reference it via an import or require statement.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -48,6 +50,8 @@ const buf6 = Buffer.from('tést');
 // Creates a Buffer containing the Latin-1 bytes [0x74, 0xe9, 0x73, 0x74].
 const buf7 = Buffer.from('tést', 'latin1');
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -103,6 +107,8 @@ When converting between `Buffer`s and strings, a character encoding may be
 specified. If no character encoding is specified, UTF-8 will be used as the
 default.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -118,6 +124,8 @@ console.log(Buffer.from('fhqwhgads', 'utf8'));
 console.log(Buffer.from('fhqwhgads', 'utf16le'));
 // Prints: <Buffer 66 00 68 00 71 00 77 00 68 00 67 00 61 00 64 00 73 00>
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -198,6 +206,8 @@ The following legacy character encodings are also supported:
   of UTF-16 that did not support characters that had code points larger than
   U+FFFF. In Node.js, these code points are always supported.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -211,6 +221,8 @@ Buffer.from('1a7', 'hex');
 Buffer.from('1634', 'hex');
 // Prints <Buffer 16 34>, all data represented.
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -264,6 +276,8 @@ There are two ways to create new [`TypedArray`][] instances from a `Buffer`:
   contents, interpreted as an array of integers, and not as a byte sequence
   of the target type.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -274,6 +288,8 @@ console.log(uint32array);
 
 // Prints: Uint32Array(4) [ 1, 2, 3, 4 ]
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -289,6 +305,8 @@ console.log(uint32array);
 * Passing the `Buffer`s underlying [`ArrayBuffer`][] will create a
   [`TypedArray`][] that shares its memory with the `Buffer`.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -302,6 +320,8 @@ console.log(uint16array);
 
 // Prints: Uint16Array(5) [ 104, 101, 108, 108, 111 ]
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -321,6 +341,8 @@ It is possible to create a new `Buffer` that shares the same allocated
 memory as a [`TypedArray`][] instance by using the `TypedArray` object's
 `.buffer` property in the same way. [`Buffer.from()`][`Buffer.from(arrayBuf)`]
 behaves like `new Uint8Array()` in this context.
+
+**ES6 Syntax** (save with `.mjs` extension)
 
 ```mjs
 import { Buffer } from 'node:buffer';
@@ -348,6 +370,8 @@ console.log(buf1);
 console.log(buf2);
 // Prints: <Buffer 88 13 70 17>
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -380,6 +404,8 @@ When creating a `Buffer` using a [`TypedArray`][]'s `.buffer`, it is
 possible to use only a portion of the underlying [`ArrayBuffer`][] by passing in
 `byteOffset` and `length` parameters.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -389,6 +415,8 @@ const buf = Buffer.from(arr.buffer, 0, 16);
 console.log(buf.length);
 // Prints: 16
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -419,6 +447,8 @@ function:
 
 `Buffer` instances can be iterated over using `for..of` syntax:
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -432,6 +462,8 @@ for (const b of buf) {
 //   2
 //   3
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -597,6 +629,8 @@ destinations without transferring or immediately copying the data. The data
 contained by the `Blob` is copied only when the `arrayBuffer()` or `text()`
 methods are called.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Blob } from 'node:buffer';
 import { setTimeout as delay } from 'node:timers/promises';
@@ -623,6 +657,8 @@ mc2.port2.postMessage(blob);
 // The Blob is still usable after posting.
 blob.text().then(console.log);
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Blob } = require('node:buffer');
@@ -693,6 +729,8 @@ changes:
 Allocates a new `Buffer` of `size` bytes. If `fill` is `undefined`, the
 `Buffer` will be zero-filled.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -701,6 +739,8 @@ const buf = Buffer.alloc(5);
 console.log(buf);
 // Prints: <Buffer 00 00 00 00 00>
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -718,6 +758,8 @@ is thrown.
 If `fill` is specified, the allocated `Buffer` will be initialized by calling
 [`buf.fill(fill)`][`buf.fill()`].
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -726,6 +768,8 @@ const buf = Buffer.alloc(5, 'a');
 console.log(buf);
 // Prints: <Buffer 61 61 61 61 61>
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -739,6 +783,8 @@ console.log(buf);
 If both `fill` and `encoding` are specified, the allocated `Buffer` will be
 initialized by calling [`buf.fill(fill, encoding)`][`buf.fill()`].
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -747,6 +793,8 @@ const buf = Buffer.alloc(11, 'aGVsbG8gd29ybGQ=', 'base64');
 console.log(buf);
 // Prints: <Buffer 68 65 6c 6c 6f 20 77 6f 72 6c 64>
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -794,6 +842,8 @@ initialized_. The contents of the newly created `Buffer` are unknown and
 _may contain sensitive data_. Use [`Buffer.alloc()`][] instead to initialize
 `Buffer` instances with zeroes.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -807,6 +857,8 @@ buf.fill(0);
 console.log(buf);
 // Prints: <Buffer 00 00 00 00 00 00 00 00 00 00>
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -877,6 +929,8 @@ memory from a pool for an indeterminate amount of time, it may be appropriate
 to create an un-pooled `Buffer` instance using `Buffer.allocUnsafeSlow()` and
 then copying out the relevant bits.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -896,6 +950,8 @@ socket.on('readable', () => {
   }
 });
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -948,6 +1004,8 @@ For strings that contain non-base64/hex-encoded data (e.g. whitespace), the
 return value might be greater than the length of a `Buffer` created from the
 string.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -957,6 +1015,8 @@ console.log(`${str}: ${str.length} characters, ` +
             `${Buffer.byteLength(str, 'utf8')} bytes`);
 // Prints: ½ + ¼ = ¾: 9 characters, 12 bytes
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -991,6 +1051,8 @@ Compares `buf1` to `buf2`, typically for the purpose of sorting arrays of
 `Buffer` instances. This is equivalent to calling
 [`buf1.compare(buf2)`][`buf.compare()`].
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -1002,6 +1064,8 @@ console.log(arr.sort(Buffer.compare));
 // Prints: [ <Buffer 30 31 32 33>, <Buffer 31 32 33 34> ]
 // (This result is equal to: [buf2, buf1].)
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -1044,6 +1108,8 @@ If `totalLength` is provided, it is coerced to an unsigned integer. If the
 combined length of the `Buffer`s in `list` exceeds `totalLength`, the result is
 truncated to `totalLength`.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -1064,6 +1130,8 @@ console.log(bufA);
 console.log(bufA.length);
 // Prints: 42
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -1126,12 +1194,16 @@ added: v5.10.0
 Allocates a new `Buffer` using an `array` of bytes in the range `0` – `255`.
 Array entries outside that range will be truncated to fit into it.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
 // Creates a new Buffer containing the UTF-8 bytes of the string 'buffer'.
 const buf = Buffer.from([0x62, 0x75, 0x66, 0x66, 0x65, 0x72]);
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -1171,6 +1243,8 @@ memory. For example, when passed a reference to the `.buffer` property of a
 [`TypedArray`][] instance, the newly created `Buffer` will share the same
 allocated memory as the [`TypedArray`][]'s underlying `ArrayBuffer`.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -1191,6 +1265,8 @@ arr[1] = 6000;
 console.log(buf);
 // Prints: <Buffer 88 13 70 17>
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -1216,6 +1292,8 @@ console.log(buf);
 The optional `byteOffset` and `length` arguments specify a memory range within
 the `arrayBuffer` that will be shared by the `Buffer`.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -1225,6 +1303,8 @@ const buf = Buffer.from(ab, 0, 2);
 console.log(buf.length);
 // Prints: 2
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -1245,6 +1325,8 @@ of memory that extends beyond the bounds of a `TypedArray` view. A new
 `Buffer` created using the `buffer` property of a `TypedArray` may extend
 beyond the range of the `TypedArray`:
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -1256,6 +1338,8 @@ const buf = Buffer.from(arrB.buffer);
 console.log(buf);
 // Prints: <Buffer 63 64 65 66>
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -1281,6 +1365,8 @@ added: v5.10.0
 
 Copies the passed `buffer` data onto a new `Buffer` instance.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -1294,6 +1380,8 @@ console.log(buf1.toString());
 console.log(buf2.toString());
 // Prints: buffer
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -1326,12 +1414,16 @@ added: v8.2.0
 For objects whose `valueOf()` function returns a value not strictly equal to
 `object`, returns `Buffer.from(object.valueOf(), offsetOrEncoding, length)`.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
 const buf = Buffer.from(new String('this is a test'));
 // Prints: <Buffer 74 68 69 73 20 69 73 20 61 20 74 65 73 74>
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -1342,6 +1434,8 @@ const buf = Buffer.from(new String('this is a test'));
 
 For objects that support `Symbol.toPrimitive`, returns
 `Buffer.from(object[Symbol.toPrimitive]('string'), offsetOrEncoding)`.
+
+**ES6 Syntax** (save with `.mjs` extension)
 
 ```mjs
 import { Buffer } from 'node:buffer';
@@ -1355,6 +1449,8 @@ class Foo {
 const buf = Buffer.from(new Foo(), 'utf8');
 // Prints: <Buffer 74 68 69 73 20 69 73 20 61 20 74 65 73 74>
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -1385,6 +1481,8 @@ added: v5.10.0
 Creates a new `Buffer` containing `string`. The `encoding` parameter identifies
 the character encoding to be used when converting `string` into bytes.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -1398,6 +1496,8 @@ console.log(buf2.toString());
 console.log(buf1.toString('latin1'));
 // Prints: this is a tÃ©st
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -1430,6 +1530,8 @@ added: v0.1.101
 
 Returns `true` if `obj` is a `Buffer`, `false` otherwise.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -1439,6 +1541,8 @@ Buffer.isBuffer('a string'); // false
 Buffer.isBuffer([]); // false
 Buffer.isBuffer(new Uint8Array(1024)); // false
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -1462,6 +1566,8 @@ added: v0.9.1
 Returns `true` if `encoding` is the name of a supported character encoding,
 or `false` otherwise.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -1477,6 +1583,8 @@ console.log(Buffer.isEncoding('utf/8'));
 console.log(Buffer.isEncoding(''));
 // Prints: false
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -1519,6 +1627,8 @@ access is the same as `Uint8Array`. In other words, `buf[index]` returns
 `buf[index] = value` does not modify the buffer if `index` is negative or
 `>= buf.length`.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -1536,6 +1646,8 @@ for (let i = 0; i < str.length; i++) {
 console.log(buf.toString('utf8'));
 // Prints: Node.js
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -1563,6 +1675,8 @@ console.log(buf.toString('utf8'));
 This `ArrayBuffer` is not guaranteed to correspond exactly to the original
 `Buffer`. See the notes on `buf.byteOffset` for details.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -1572,6 +1686,8 @@ const buffer = Buffer.from(arrayBuffer);
 console.log(buffer.buffer === arrayBuffer);
 // Prints: true
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -1598,6 +1714,8 @@ to the `Buffer` object itself.
 A common issue when creating a `TypedArray` object that shares its memory with
 a `Buffer` is that in this case one needs to specify the `byteOffset` correctly:
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -1609,6 +1727,8 @@ const nodeBuffer = Buffer.from([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
 // for `nodeBuffer`.
 new Int8Array(nodeBuffer.buffer, nodeBuffer.byteOffset, nodeBuffer.length);
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -1655,6 +1775,8 @@ Comparison is based on the actual sequence of bytes in each `Buffer`.
 * `1` is returned if `target` should come _before_ `buf` when sorted.
 * `-1` is returned if `target` should come _after_ `buf` when sorted.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -1676,6 +1798,8 @@ console.log([buf1, buf2, buf3].sort(Buffer.compare));
 // Prints: [ <Buffer 41 42 43>, <Buffer 41 42 43 44>, <Buffer 42 43 44> ]
 // (This result is equal to: [buf1, buf3, buf2].)
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -1703,6 +1827,8 @@ The optional `targetStart`, `targetEnd`, `sourceStart`, and `sourceEnd`
 arguments can be used to limit the comparison to specific ranges within `target`
 and `buf` respectively.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -1716,6 +1842,8 @@ console.log(buf1.compare(buf2, 0, 6, 4));
 console.log(buf1.compare(buf2, 5, 6, 5));
 // Prints: 1
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -1756,6 +1884,8 @@ memory region overlaps with `buf`.
 for all TypedArrays, including Node.js `Buffer`s, although it takes
 different function arguments.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -1776,6 +1906,8 @@ buf1.copy(buf2, 8, 16, 20);
 console.log(buf2.toString('ascii', 0, 25));
 // Prints: !!!!!!!!qrst!!!!!!!!!!!!!
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -1798,6 +1930,8 @@ console.log(buf2.toString('ascii', 0, 25));
 // Prints: !!!!!!!!qrst!!!!!!!!!!!!!
 ```
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -1816,6 +1950,8 @@ buf.copy(buf, 0, 4, 10);
 console.log(buf.toString());
 // Prints: efghijghijklmnopqrstuvwxyz
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -1847,6 +1983,8 @@ added: v1.1.0
 Creates and returns an [iterator][] of `[index, byte]` pairs from the contents
 of `buf`.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -1865,6 +2003,8 @@ for (const pair of buf.entries()) {
 //   [4, 101]
 //   [5, 114]
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -1903,6 +2043,8 @@ Returns `true` if both `buf` and `otherBuffer` have exactly the same bytes,
 `false` otherwise. Equivalent to
 [`buf.compare(otherBuffer) === 0`][`buf.compare()`].
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -1915,6 +2057,8 @@ console.log(buf1.equals(buf2));
 console.log(buf1.equals(buf3));
 // Prints: false
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -1966,6 +2110,8 @@ changes:
 Fills `buf` with the specified `value`. If the `offset` and `end` are not given,
 the entire `buf` will be filled:
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -1982,6 +2128,8 @@ const c = Buffer.allocUnsafe(5).fill('');
 console.log(c.fill(''));
 // Prints: <Buffer 00 00 00 00 00>
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -2007,6 +2155,8 @@ filled with `value & 255`.
 If the final write of a `fill()` operation falls on a multi-byte character,
 then only the bytes of that character that fit into `buf` are written:
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -2015,6 +2165,8 @@ import { Buffer } from 'node:buffer';
 console.log(Buffer.allocUnsafe(5).fill('\u0222'));
 // Prints: <Buffer c8 a2 c8 a2 c8>
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -2028,6 +2180,8 @@ console.log(Buffer.allocUnsafe(5).fill('\u0222'));
 If `value` contains invalid characters, it is truncated; if no valid
 fill data remains, an exception is thrown:
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -2040,6 +2194,8 @@ console.log(buf.fill('aazz', 'hex'));
 console.log(buf.fill('zz', 'hex'));
 // Throws an exception.
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -2069,6 +2225,8 @@ added: v5.3.0
 
 Equivalent to [`buf.indexOf() !== -1`][`buf.indexOf()`].
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -2089,6 +2247,8 @@ console.log(buf.includes(Buffer.from('a buffer example').slice(0, 8)));
 console.log(buf.includes('this', 4));
 // Prints: false
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -2145,6 +2305,8 @@ If `value` is:
 * a number, `value` will be interpreted as an unsigned 8-bit integer
   value between `0` and `255`.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -2170,6 +2332,8 @@ console.log(utf16Buffer.indexOf('\u03a3', 0, 'utf16le'));
 console.log(utf16Buffer.indexOf('\u03a3', -4, 'utf16le'));
 // Prints: 6
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -2205,6 +2369,8 @@ If `byteOffset` is not a number, it will be coerced to a number. If the result
 of coercion is `NaN` or `0`, then the entire buffer will be searched. This
 behavior matches [`String.prototype.indexOf()`][].
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -2222,6 +2388,8 @@ console.log(b.indexOf('b', {}));
 console.log(b.indexOf('b', null));
 console.log(b.indexOf('b', []));
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -2255,6 +2423,8 @@ added: v1.1.0
 
 Creates and returns an [iterator][] of `buf` keys (indexes).
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -2271,6 +2441,8 @@ for (const key of buf.keys()) {
 //   4
 //   5
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -2312,6 +2484,8 @@ changes:
 Identical to [`buf.indexOf()`][], except the last occurrence of `value` is found
 rather than the first occurrence.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -2339,6 +2513,8 @@ console.log(utf16Buffer.lastIndexOf('\u03a3', undefined, 'utf16le'));
 console.log(utf16Buffer.lastIndexOf('\u03a3', -5, 'utf16le'));
 // Prints: 4
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -2376,6 +2552,8 @@ If `byteOffset` is not a number, it will be coerced to a number. Any arguments
 that coerce to `NaN`, like `{}` or `undefined`, will search the whole buffer.
 This behavior matches [`String.prototype.lastIndexOf()`][].
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -2396,6 +2574,8 @@ console.log(b.lastIndexOf('b', {}));
 console.log(b.lastIndexOf('b', null));
 console.log(b.lastIndexOf('b', []));
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -2430,6 +2610,8 @@ added: v0.1.90
 
 Returns the number of bytes in `buf`.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -2445,6 +2627,8 @@ buf.write('some string', 0, 'utf8');
 console.log(buf.length);
 // Prints: 1234
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -2530,6 +2714,8 @@ Reads an unsigned, big-endian 64-bit integer from `buf` at the specified
 
 This function is also available under the `readBigUint64BE` alias.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -2538,6 +2724,8 @@ const buf = Buffer.from([0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff]);
 console.log(buf.readBigUInt64BE(0));
 // Prints: 4294967295n
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -2571,6 +2759,8 @@ Reads an unsigned, little-endian 64-bit integer from `buf` at the specified
 
 This function is also available under the `readBigUint64LE` alias.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -2579,6 +2769,8 @@ const buf = Buffer.from([0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff]);
 console.log(buf.readBigUInt64LE(0));
 // Prints: 18446744069414584320n
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -2606,6 +2798,8 @@ changes:
 
 Reads a 64-bit, big-endian double from `buf` at the specified `offset`.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -2614,6 +2808,8 @@ const buf = Buffer.from([1, 2, 3, 4, 5, 6, 7, 8]);
 console.log(buf.readDoubleBE(0));
 // Prints: 8.20788039913184e-304
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -2641,6 +2837,8 @@ changes:
 
 Reads a 64-bit, little-endian double from `buf` at the specified `offset`.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -2651,6 +2849,8 @@ console.log(buf.readDoubleLE(0));
 console.log(buf.readDoubleLE(1));
 // Throws ERR_OUT_OF_RANGE.
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -2680,6 +2880,8 @@ changes:
 
 Reads a 32-bit, big-endian float from `buf` at the specified `offset`.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -2688,6 +2890,8 @@ const buf = Buffer.from([1, 2, 3, 4]);
 console.log(buf.readFloatBE(0));
 // Prints: 2.387939260590663e-38
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -2715,6 +2919,8 @@ changes:
 
 Reads a 32-bit, little-endian float from `buf` at the specified `offset`.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -2725,6 +2931,8 @@ console.log(buf.readFloatLE(0));
 console.log(buf.readFloatLE(1));
 // Throws ERR_OUT_OF_RANGE.
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -2756,6 +2964,8 @@ Reads a signed 8-bit integer from `buf` at the specified `offset`.
 
 Integers read from a `Buffer` are interpreted as two's complement signed values.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -2768,6 +2978,8 @@ console.log(buf.readInt8(1));
 console.log(buf.readInt8(2));
 // Throws ERR_OUT_OF_RANGE.
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -2801,6 +3013,8 @@ Reads a signed, big-endian 16-bit integer from `buf` at the specified `offset`.
 
 Integers read from a `Buffer` are interpreted as two's complement signed values.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -2809,6 +3023,8 @@ const buf = Buffer.from([0, 5]);
 console.log(buf.readInt16BE(0));
 // Prints: 5
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -2839,6 +3055,8 @@ Reads a signed, little-endian 16-bit integer from `buf` at the specified
 
 Integers read from a `Buffer` are interpreted as two's complement signed values.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -2849,6 +3067,8 @@ console.log(buf.readInt16LE(0));
 console.log(buf.readInt16LE(1));
 // Throws ERR_OUT_OF_RANGE.
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -2880,6 +3100,8 @@ Reads a signed, big-endian 32-bit integer from `buf` at the specified `offset`.
 
 Integers read from a `Buffer` are interpreted as two's complement signed values.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -2888,6 +3110,8 @@ const buf = Buffer.from([0, 0, 0, 5]);
 console.log(buf.readInt32BE(0));
 // Prints: 5
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -2918,6 +3142,8 @@ Reads a signed, little-endian 32-bit integer from `buf` at the specified
 
 Integers read from a `Buffer` are interpreted as two's complement signed values.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -2928,6 +3154,8 @@ console.log(buf.readInt32LE(0));
 console.log(buf.readInt32LE(1));
 // Throws ERR_OUT_OF_RANGE.
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -2961,6 +3189,8 @@ Reads `byteLength` number of bytes from `buf` at the specified `offset`
 and interprets the result as a big-endian, two's complement signed value
 supporting up to 48 bits of accuracy.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -2973,6 +3203,8 @@ console.log(buf.readIntBE(1, 6).toString(16));
 console.log(buf.readIntBE(1, 0).toString(16));
 // Throws ERR_OUT_OF_RANGE.
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -3008,6 +3240,8 @@ Reads `byteLength` number of bytes from `buf` at the specified `offset`
 and interprets the result as a little-endian, two's complement signed value
 supporting up to 48 bits of accuracy.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -3016,6 +3250,8 @@ const buf = Buffer.from([0x12, 0x34, 0x56, 0x78, 0x90, 0xab]);
 console.log(buf.readIntLE(0, 6).toString(16));
 // Prints: -546f87a9cbee
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -3050,6 +3286,8 @@ Reads an unsigned 8-bit integer from `buf` at the specified `offset`.
 
 This function is also available under the `readUint8` alias.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -3062,6 +3300,8 @@ console.log(buf.readUInt8(1));
 console.log(buf.readUInt8(2));
 // Throws ERR_OUT_OF_RANGE.
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -3101,6 +3341,8 @@ Reads an unsigned, big-endian 16-bit integer from `buf` at the specified
 
 This function is also available under the `readUint16BE` alias.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -3111,6 +3353,8 @@ console.log(buf.readUInt16BE(0).toString(16));
 console.log(buf.readUInt16BE(1).toString(16));
 // Prints: 3456
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -3148,6 +3392,8 @@ Reads an unsigned, little-endian 16-bit integer from `buf` at the specified
 
 This function is also available under the `readUint16LE` alias.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -3160,6 +3406,8 @@ console.log(buf.readUInt16LE(1).toString(16));
 console.log(buf.readUInt16LE(2).toString(16));
 // Throws ERR_OUT_OF_RANGE.
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -3199,6 +3447,8 @@ Reads an unsigned, big-endian 32-bit integer from `buf` at the specified
 
 This function is also available under the `readUint32BE` alias.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -3207,6 +3457,8 @@ const buf = Buffer.from([0x12, 0x34, 0x56, 0x78]);
 console.log(buf.readUInt32BE(0).toString(16));
 // Prints: 12345678
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -3242,6 +3494,8 @@ Reads an unsigned, little-endian 32-bit integer from `buf` at the specified
 
 This function is also available under the `readUint32LE` alias.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -3252,6 +3506,8 @@ console.log(buf.readUInt32LE(0).toString(16));
 console.log(buf.readUInt32LE(1).toString(16));
 // Throws ERR_OUT_OF_RANGE.
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -3292,6 +3548,8 @@ up to 48 bits of accuracy.
 
 This function is also available under the `readUintBE` alias.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -3302,6 +3560,8 @@ console.log(buf.readUIntBE(0, 6).toString(16));
 console.log(buf.readUIntBE(1, 6).toString(16));
 // Throws ERR_OUT_OF_RANGE.
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -3342,6 +3602,8 @@ up to 48 bits of accuracy.
 
 This function is also available under the `readUintLE` alias.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -3350,6 +3612,8 @@ const buf = Buffer.from([0x12, 0x34, 0x56, 0x78, 0x90, 0xab]);
 console.log(buf.readUIntLE(0, 6).toString(16));
 // Prints: ab9078563412
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -3382,6 +3646,8 @@ This method is inherited from [`TypedArray.prototype.subarray()`][].
 Modifying the new `Buffer` slice will modify the memory in the original `Buffer`
 because the allocated memory of the two objects overlap.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -3405,6 +3671,8 @@ buf1[0] = 33;
 console.log(buf2.toString('ascii', 0, buf2.length));
 // Prints: !bc
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -3433,6 +3701,8 @@ console.log(buf2.toString('ascii', 0, buf2.length));
 Specifying negative indexes causes the slice to be generated relative to the
 end of `buf` rather than the beginning.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -3450,6 +3720,8 @@ console.log(buf.subarray(-5, -2).toString());
 // Prints: uff
 // (Equivalent to buf.subarray(1, 4).)
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -3505,6 +3777,8 @@ This method is not compatible with the `Uint8Array.prototype.slice()`,
 which is a superclass of `Buffer`. To copy the slice, use
 `Uint8Array.prototype.slice()`.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -3526,6 +3800,8 @@ console.log(notReallyCopiedBuf.toString());
 console.log(buf.toString());
 // Also prints: cuffer (!)
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -3561,6 +3837,8 @@ Interprets `buf` as an array of unsigned 16-bit integers and swaps the
 byte order _in-place_. Throws [`ERR_INVALID_BUFFER_SIZE`][] if [`buf.length`][]
 is not a multiple of 2.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -3579,6 +3857,8 @@ const buf2 = Buffer.from([0x1, 0x2, 0x3]);
 buf2.swap16();
 // Throws ERR_INVALID_BUFFER_SIZE.
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -3602,12 +3882,16 @@ buf2.swap16();
 One convenient use of `buf.swap16()` is to perform a fast in-place conversion
 between UTF-16 little-endian and UTF-16 big-endian:
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
 const buf = Buffer.from('This is little-endian UTF-16', 'utf16le');
 buf.swap16(); // Convert to big-endian UTF-16 text.
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -3628,6 +3912,8 @@ Interprets `buf` as an array of unsigned 32-bit integers and swaps the
 byte order _in-place_. Throws [`ERR_INVALID_BUFFER_SIZE`][] if [`buf.length`][]
 is not a multiple of 4.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -3646,6 +3932,8 @@ const buf2 = Buffer.from([0x1, 0x2, 0x3]);
 buf2.swap32();
 // Throws ERR_INVALID_BUFFER_SIZE.
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -3677,6 +3965,8 @@ added: v6.3.0
 Interprets `buf` as an array of 64-bit numbers and swaps byte order _in-place_.
 Throws [`ERR_INVALID_BUFFER_SIZE`][] if [`buf.length`][] is not a multiple of 8.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -3695,6 +3985,8 @@ const buf2 = Buffer.from([0x1, 0x2, 0x3]);
 buf2.swap64();
 // Throws ERR_INVALID_BUFFER_SIZE.
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -3729,6 +4021,8 @@ this function when stringifying a `Buffer` instance.
 `Buffer.from()` accepts objects in the format returned from this method.
 In particular, `Buffer.from(buf.toJSON())` works like `Buffer.from(buf)`.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -3747,6 +4041,8 @@ const copy = JSON.parse(json, (key, value) => {
 console.log(copy);
 // Prints: <Buffer 01 02 03 04 05>
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -3788,6 +4084,8 @@ then each invalid byte is replaced with the replacement character `U+FFFD`.
 The maximum length of a string instance (in UTF-16 code units) is available
 as [`buffer.constants.MAX_STRING_LENGTH`][].
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -3812,6 +4110,8 @@ console.log(buf2.toString('utf8', 0, 3));
 console.log(buf2.toString(undefined, 0, 3));
 // Prints: té
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -3849,6 +4149,8 @@ added: v1.1.0
 Creates and returns an [iterator][] for `buf` values (bytes). This function is
 called automatically when a `Buffer` is used in a `for..of` statement.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -3876,6 +4178,8 @@ for (const value of buf) {
 //   101
 //   114
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -3924,6 +4228,8 @@ Writes `string` to `buf` at `offset` according to the character encoding in
 not contain enough space to fit the entire string, only part of `string` will be
 written. However, partially encoded characters will not be written.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -3941,6 +4247,8 @@ const length = buffer.write('abcd', 8);
 console.log(`${length} bytes: ${buffer.toString('utf8', 8, 10)}`);
 // Prints: 2 bytes : ab
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -3977,6 +4285,8 @@ Writes `value` to `buf` at the specified `offset` as big-endian.
 
 `value` is interpreted and written as a two's complement signed integer.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -3987,6 +4297,8 @@ buf.writeBigInt64BE(0x0102030405060708n, 0);
 console.log(buf);
 // Prints: <Buffer 01 02 03 04 05 06 07 08>
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -4016,6 +4328,8 @@ Writes `value` to `buf` at the specified `offset` as little-endian.
 
 `value` is interpreted and written as a two's complement signed integer.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -4026,6 +4340,8 @@ buf.writeBigInt64LE(0x0102030405060708n, 0);
 console.log(buf);
 // Prints: <Buffer 08 07 06 05 04 03 02 01>
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -4061,6 +4377,8 @@ Writes `value` to `buf` at the specified `offset` as big-endian.
 
 This function is also available under the `writeBigUint64BE` alias.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -4071,6 +4389,8 @@ buf.writeBigUInt64BE(0xdecafafecacefaden, 0);
 console.log(buf);
 // Prints: <Buffer de ca fa fe ca ce fa de>
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -4104,6 +4424,8 @@ changes:
 
 Writes `value` to `buf` at the specified `offset` as little-endian
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -4114,6 +4436,8 @@ buf.writeBigUInt64LE(0xdecafafecacefaden, 0);
 console.log(buf);
 // Prints: <Buffer de fa ce ca fe fa ca de>
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -4148,6 +4472,8 @@ Writes `value` to `buf` at the specified `offset` as big-endian. The `value`
 must be a JavaScript number. Behavior is undefined when `value` is anything
 other than a JavaScript number.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -4158,6 +4484,8 @@ buf.writeDoubleBE(123.456, 0);
 console.log(buf);
 // Prints: <Buffer 40 5e dd 2f 1a 9f be 77>
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -4190,6 +4518,8 @@ Writes `value` to `buf` at the specified `offset` as little-endian. The `value`
 must be a JavaScript number. Behavior is undefined when `value` is anything
 other than a JavaScript number.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -4200,6 +4530,8 @@ buf.writeDoubleLE(123.456, 0);
 console.log(buf);
 // Prints: <Buffer 77 be 9f 1a 2f dd 5e 40>
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -4231,6 +4563,8 @@ changes:
 Writes `value` to `buf` at the specified `offset` as big-endian. Behavior is
 undefined when `value` is anything other than a JavaScript number.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -4241,6 +4575,8 @@ buf.writeFloatBE(0xcafebabe, 0);
 console.log(buf);
 // Prints: <Buffer 4f 4a fe bb>
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -4272,6 +4608,8 @@ changes:
 Writes `value` to `buf` at the specified `offset` as little-endian. Behavior is
 undefined when `value` is anything other than a JavaScript number.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -4282,6 +4620,8 @@ buf.writeFloatLE(0xcafebabe, 0);
 console.log(buf);
 // Prints: <Buffer bb fe 4a 4f>
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -4316,6 +4656,8 @@ a signed 8-bit integer.
 
 `value` is interpreted and written as a two's complement signed integer.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -4327,6 +4669,8 @@ buf.writeInt8(-2, 1);
 console.log(buf);
 // Prints: <Buffer 02 fe>
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -4362,6 +4706,8 @@ anything other than a signed 16-bit integer.
 
 The `value` is interpreted and written as a two's complement signed integer.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -4372,6 +4718,8 @@ buf.writeInt16BE(0x0102, 0);
 console.log(buf);
 // Prints: <Buffer 01 02>
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -4406,6 +4754,8 @@ anything other than a signed 16-bit integer.
 
 The `value` is interpreted and written as a two's complement signed integer.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -4416,6 +4766,8 @@ buf.writeInt16LE(0x0304, 0);
 console.log(buf);
 // Prints: <Buffer 04 03>
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -4450,6 +4802,8 @@ anything other than a signed 32-bit integer.
 
 The `value` is interpreted and written as a two's complement signed integer.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -4460,6 +4814,8 @@ buf.writeInt32BE(0x01020304, 0);
 console.log(buf);
 // Prints: <Buffer 01 02 03 04>
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -4494,6 +4850,8 @@ anything other than a signed 32-bit integer.
 
 The `value` is interpreted and written as a two's complement signed integer.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -4504,6 +4862,8 @@ buf.writeInt32LE(0x05060708, 0);
 console.log(buf);
 // Prints: <Buffer 08 07 06 05>
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -4538,6 +4898,8 @@ Writes `byteLength` bytes of `value` to `buf` at the specified `offset`
 as big-endian. Supports up to 48 bits of accuracy. Behavior is undefined when
 `value` is anything other than a signed integer.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -4548,6 +4910,8 @@ buf.writeIntBE(0x1234567890ab, 0, 6);
 console.log(buf);
 // Prints: <Buffer 12 34 56 78 90 ab>
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -4582,6 +4946,8 @@ Writes `byteLength` bytes of `value` to `buf` at the specified `offset`
 as little-endian. Supports up to 48 bits of accuracy. Behavior is undefined
 when `value` is anything other than a signed integer.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -4592,6 +4958,8 @@ buf.writeIntLE(0x1234567890ab, 0, 6);
 console.log(buf);
 // Prints: <Buffer ab 90 78 56 34 12>
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -4631,6 +4999,8 @@ other than an unsigned 8-bit integer.
 
 This function is also available under the `writeUint8` alias.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -4644,6 +5014,8 @@ buf.writeUInt8(0x42, 3);
 console.log(buf);
 // Prints: <Buffer 03 04 23 42>
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -4686,6 +5058,8 @@ is anything other than an unsigned 16-bit integer.
 
 This function is also available under the `writeUint16BE` alias.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -4697,6 +5071,8 @@ buf.writeUInt16BE(0xbeef, 2);
 console.log(buf);
 // Prints: <Buffer de ad be ef>
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -4737,6 +5113,8 @@ anything other than an unsigned 16-bit integer.
 
 This function is also available under the `writeUint16LE` alias.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -4748,6 +5126,8 @@ buf.writeUInt16LE(0xbeef, 2);
 console.log(buf);
 // Prints: <Buffer ad de ef be>
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -4788,6 +5168,8 @@ is anything other than an unsigned 32-bit integer.
 
 This function is also available under the `writeUint32BE` alias.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -4798,6 +5180,8 @@ buf.writeUInt32BE(0xfeedface, 0);
 console.log(buf);
 // Prints: <Buffer fe ed fa ce>
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -4837,6 +5221,8 @@ anything other than an unsigned 32-bit integer.
 
 This function is also available under the `writeUint32LE` alias.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -4847,6 +5233,8 @@ buf.writeUInt32LE(0xfeedface, 0);
 console.log(buf);
 // Prints: <Buffer ce fa ed fe>
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -4888,6 +5276,8 @@ when `value` is anything other than an unsigned integer.
 
 This function is also available under the `writeUintBE` alias.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -4898,6 +5288,8 @@ buf.writeUIntBE(0x1234567890ab, 0, 6);
 console.log(buf);
 // Prints: <Buffer 12 34 56 78 90 ab>
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -4939,6 +5331,8 @@ when `value` is anything other than an unsigned integer.
 
 This function is also available under the `writeUintLE` alias.
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer } from 'node:buffer';
 
@@ -4949,6 +5343,8 @@ buf.writeUIntLE(0x1234567890ab, 0, 6);
 console.log(buf);
 // Prints: <Buffer ab 90 78 56 34 12>
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer } = require('node:buffer');
@@ -5319,6 +5715,8 @@ Encodings supported by `buffer.transcode()` are: `'ascii'`, `'utf8'`,
 The transcoding process will use substitution characters if a given byte
 sequence cannot be adequately represented in the target encoding. For instance:
 
+**ES6 Syntax** (save with `.mjs` extension)
+
 ```mjs
 import { Buffer, transcode } from 'node:buffer';
 
@@ -5326,6 +5724,8 @@ const newBuf = transcode(Buffer.from('€'), 'utf8', 'ascii');
 console.log(newBuf.toString('ascii'));
 // Prints: '?'
 ```
+
+**CommonJS Syntax** (save with `.js` extension)
 
 ```cjs
 const { Buffer, transcode } = require('node:buffer');
