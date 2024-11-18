@@ -27,5 +27,6 @@ if (process.argv[2] === 'child') {
 
   if (jsStack.length > 0) {
     assert(jsStack.some((frame) => frame.includes(__filename)));
+    assert(jsStack[0].includes(__filename, 0));
   }
 }
